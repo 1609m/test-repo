@@ -1,0 +1,74 @@
+TWORZENIE BRANCHA:
+    git checkout -b NAZWA_BRANCHA      | Utworzenie i przeskoczenie na nowego brancha (lokalnie)
+    git push -u origin NAZWA_BRANCHA   | Wysłanie brancha na remote i ustawienie śledzenia zmian
+
+PRACA NAD ZADANIEM:
+    git commit -m 'TREŚĆ'              | Commitowanie zmian, opcjonanie z przełącznikiem "-p" żeby dodawać fragmenty plików zamiast całych
+    git push                           | Wysyłanie zmian na remote
+
+PO ZAKOŃCZONEJ PRACY NAD ZADANIEM:
+    git checkout develop               | Przełączanie się na develop'a
+    git pull                           | Pobranie najnowszego develop'a
+    git checkout -                     | Przełączenie się na poprzedni branch (znaczek "-" oznacza "poprzedni branch")
+    git rebase -p develop              | Nałożenie zmian z developa na nasz branch (-p preserve merges) 
+    git push --force-with-lease        | Wysłanie zmian na remote
+
+MERGE REQUEST na gitlab'ie (zaznaczamy "delete source branch")
+
+PO MERGE REQUEST'ie:
+    git checkout develop               | Przełączanie się na develop'a
+    git pull                           | Pobranie najnowszego develop'a
+    git branch -d NAZWA_BRANCHA        | Usunięcie lokalnego brancha (branch zdalny został usunięty podczas merge request)
+    git remote update --prune          | Aktualizacja branchy (synchronizacja z remote)
+    
+
+JA:
+	sudo chmod 777 -R vendor/primesoft/generatedbundle/  	(z katalogu vdesk) by mieć dostęp (np do otwarcia edycji w vdesku)
+	git merge --no-ff develop								nałożenie zmian z developa na nasz branch (np poziom vdesk/../s3bundle, NIE z containera)
+	git fetch												pokazuje zdalne branche
+	git merge develop										nałożenie zmian z pobranego developa na branch na któym się siedzi
+
+BRANCH (najpierw poziom containera)
+	cd var/www/vdesk/vendor/primesoft/s3bundle
+	git branch											wyświetlenie branchy
+	git checkout develop								przełączenie się na developa
+	git pull											pobranie developa
+	git checkout -b s3-3296								utworzenie i przeskoczenie na lokalnego brancha
+	git clean -f										czyszczenie generatedboundle (bezpieczne XD) (z poziomu containera, var/www/vde...oft/genereteboundle)
+	git push origin :NAZWA_BRANCHA
+	<przejscie instalacji
+    git remote add origin https://github.com/user/repo.git  utworzenie nowego remote'u (pokazanie gdzie jest nasze zdalne repo)
+    git remote -v                                       pokazanie aktualnych zdalnych repo
+    git pull origin master                              pobranie mastera na lokalny branch
+
+INSTALACJA	https://s3.wiki.primesoft.pl/wiki/index.php?title=Instalacja
+// raczej z poziomu container var/www/vdesk
+	composer install
+	npm install
+	node node_modules/.bin/grunt dump						np przy zmianie frontu
+	php bin/console doctrine:migrations:migrate
+	php bin/console doctrine:migrations:generate			tworzy nową migrację, należy w niej wpisać nową wersję (up) oraz poprzednią (down), potem ...:migrate
+	php bin/console assets:install
+	php bin/console r:f										czyszczenie redisa
+	npm ci
+	npm run dev
+
+PRZYDATNE
+	docker ps															procesy dockera (vdesk-www-centos)
+	docker exec -it vdesk-www-centos sh									wejście na poziom containera
+	docker-compose up -d												postawienie dockera (poziom ~/Docker, NIE container)
+	docker-compose down													wyłączenie dockera (to + w/w = restart dockera)
+	sudo chmod 777 -R .													dostęp
+	rm -Rf var/cache/													reczne czyszczenie cache'a (poziom vdesk containera) (zalecam gdy r:f nie dziala)
+	ctrl+shift+R														czyści cache (poziom przeglądarki)
+	https://gitlab.primesoft.pl/Docker/vdesk-compose/-/tree/master		gitlab
+	https://gitlab.vdesk.primesoft.pl/vdesk/vdesk_s3bundle				gitLab s3bundle
+	http://localhost/vdesks3_rd/index.php								link do vdeska
+	http://rdteam.jira.primesoft.pl:8080/								jira
+	composer req primesoft/s3bundle dev-RC_3.8.1.0						przepiecie sie na rc (poziom vdesk containera)
+
+ROBOCZO
+	https://stackoverflow.com/questions/9537392/git-fetch-remote-branch
+
+
+
