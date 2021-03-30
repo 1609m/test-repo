@@ -69,6 +69,12 @@ PRZYDATNE
 
 ROBOCZO
 	https://stackoverflow.com/questions/9537392/git-fetch-remote-branch
-
+	
+RÓŻNE (np kurs)
+	php bin/console make:controller				| generowanie controllera, potem pyta o szczegóły
+	php bin/console make:entity				| tworzy nową encję, potem pyta o jej szczegóły //zamiast entity można dać user
+	php bin/console doctrine:query:sql "SHOW DATABASES"	| takie jakby sprawdzenie połączenia z bazą danych (zwraca int(0) ), szczegóły db w .env
+	php bin/console make:migration				| tworzy migracje (przenosi obiektowe odwzorowanie do bazy danych)(chyba taka prostsza wersja doctrine:migration:generate)
+	php bin/console doctrine:migrations:migrate		| wykonanie migracji
 
 
