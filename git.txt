@@ -76,5 +76,8 @@ RÓŻNE (np kurs)
 	php bin/console doctrine:query:sql "SHOW DATABASES"	| takie jakby sprawdzenie połączenia z bazą danych (zwraca int(0) ), szczegóły db w .env
 	php bin/console make:migration				| tworzy migracje (przenosi obiektowe odwzorowanie do bazy danych)(chyba taka prostsza wersja doctrine:migration:generate)
 	php bin/console doctrine:migrations:migrate		| wykonanie migracji
+	composer require orm-fixtures --dev			| instaluje fixturesy
+	php bin/console make:fixture				| tworzy fixtura (np do zrobienia sez jego poziomu użytkownika)
+
 
 
