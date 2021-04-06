@@ -79,7 +79,7 @@ RÓŻNE (np kurs)
 	composer require orm-fixtures --dev			| instaluje fixturesy
 	php bin/console make:fixture				| tworzy fixtura (np do zrobienia sez jego poziomu użytkownika)
 	php bin/console make:registration-form			| tworzy formularz rejestracji
-
+	php bin/console make:form				| tworzy formularz
 
 
 
