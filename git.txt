@@ -73,12 +73,14 @@ ROBOCZO
 RÓŻNE (np kurs)
 	php bin/console make:controller				| generowanie controllera, potem pyta o szczegóły
 	php bin/console make:entity				| tworzy nową encję, potem pyta o jej szczegóły //zamiast entity można dać user. By dodać jakieś pole wystarczy wpisać komendę i podać istniejącą nazwę, potem dodać pola
+	php bin/console make:auth				| tworzy kod do uwierzytelniania (SecurityController.php, login.html.twig, src/Security/LoginFormAuthenticator.php)
 	php bin/console doctrine:query:sql "SHOW DATABASES"	| takie jakby sprawdzenie połączenia z bazą danych (zwraca int(0) ), szczegóły db w .env
 	php bin/console make:migration				| tworzy migracje (przenosi obiektowe odwzorowanie do bazy danych)(chyba taka prostsza wersja doctrine:migration:generate)
 	php bin/console doctrine:migrations:migrate		| wykonanie migracji
 	composer require orm-fixtures --dev			| instaluje fixturesy
 	php bin/console make:fixture				| tworzy fixtura (np do zrobienia sez jego poziomu użytkownika)
-	php bin/console make:registration-form			| tworzy formularz rejestracji
+	php bin/console doctrine:fixtures:load			| ładuje dataFixturesy do bazy
+	php bin/console make:registration-form			| tworzy formularz rejestracji (RegistrationController.php, Form/RegistrationFormType.php, register.html.twig, aktualizuje Entity/User.php)
 	php bin/console make:form				| tworzy formularz
 
 
